@@ -57,5 +57,5 @@ export function renderPaymentSummary() {
 
   document.querySelector('.js-payment-summary').innerHTML = paymentSummaryHtml;
 
-  console.log(totalBeforCents, taxCents, totalCents);
+  // console.log(totalBeforCents, taxCents, totalCents);
 }
