@@ -17,6 +17,7 @@ import {
 
 export function renderOrderSummary() {
   let cartSummaryHtml = "";
+
   cart.forEach((cartItem) => {
     const productId = cartItem.productId;
 
@@ -44,7 +45,7 @@ export function renderOrderSummary() {
                 <div class="product-name">
                   ${matchedProduct.name}
                 </div>
-                <div class="product-price">$${formatCurrency(matchedProduct.priceCents)}</div>
+                <div class="product-price">${matchedProduct.getPrice()}</div>
                 <div class="product-quantity">
                   <span> Quantity: <span class="quantity-label">${cartItem.quantity}</span> </span>
                   <span class="update-quantity-link link-primary">
@@ -118,7 +119,7 @@ export function renderOrderSummary() {
 
         removeFromCart(productCartID);
 
-         renderPaymentSummary();
+        renderPaymentSummary();
 
         const container = document.querySelector(
           `.cart-item-container-${productCartID}`,
