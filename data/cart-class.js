@@ -1,4 +1,4 @@
-import { products } from "./products.js";
+// import { products } from "./products.js";
 
 class Cart {
   cartItems;
@@ -99,5 +99,5 @@ const businessCart = new Cart("cart-buisness");
 
 cart.localStorageKey = 'test';
 
-console.log(cart);
-console.log(businessCart);
+// console.log(cart);
+// console.log(businessCart);

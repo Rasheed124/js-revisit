@@ -21,7 +21,7 @@ describe("test suite: addToCart", () => {
           store = {};
         })
       },
-      configurable: true, // Allows us to redefine it across test suites if needed
+      configurable: true, 
       writable: true
     });
   });

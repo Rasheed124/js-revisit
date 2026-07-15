@@ -1,13 +1,16 @@
 import { cart, addToCart, updateCartQuanity } from "../data/cart.js";
 
-import { products } from "../data/products.js";
+import { loadProducts, products } from "../data/products.js";
 
 import { formatCurrency } from "./utils/money.js";
 
-let productHtml = "";
+loadProducts(renderProductGrid);
 
-products.forEach((product) => {
-  productHtml += `
+function renderProductGrid() {
+  let productHtml = "";
+
+  products.forEach((product) => {
+    productHtml += `
     <div class="product-container">
       <div class="product-image-container">
         <img
@@ -63,14 +66,15 @@ products.forEach((product) => {
       </button>
     </div>
   `;
-});
-
-document.querySelector(".products-grid").innerHTML = productHtml;
-
-document.querySelectorAll(".add-to-cart-button").forEach((button, index) => {
-  button.addEventListener("click", () => {
-    const productId = button.dataset.productId;
-    addToCart(productId);
-    updateCartQuanity();
   });
-});
+
+  document.querySelector(".products-grid").innerHTML = productHtml;
+
+  document.querySelectorAll(".add-to-cart-button").forEach((button, index) => {
+    button.addEventListener("click", () => {
+      const productId = button.dataset.productId;
+      addToCart(productId);
+      updateCartQuanity();
+    });
+  });
+}
