@@ -8,7 +8,6 @@ class Cart {
     this.#localStorageKey = localStorageKey;
     this.#loadFromStorage();
 
-    // Object.seal(this)
   }
 
   #loadFromStorage() {

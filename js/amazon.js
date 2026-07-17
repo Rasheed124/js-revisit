@@ -1,7 +1,10 @@
-import { cart, addToCart, updateCartQuanity } from "../data/cart.js";
-
+import {
+  cart,
+  addToCart,
+  updateCartQuanity,
+  updateQuantity,
+} from "../data/cart.js";
 import { loadProductsFetch, products } from "../data/products.js";
-
 import { formatCurrency } from "./utils/money.js";
 
 async function loadHomePage() {
@@ -46,7 +49,8 @@ function renderProductGrid() {
       </div>
 
       <div class="product-quantity-container">
-        <select>
+        <!-- 1. Added an explicit product-specific selector class -->
+        <select class="js-quantity-selector-${product.id}">
           <option selected value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -78,10 +82,18 @@ function renderProductGrid() {
 
   document.querySelector(".products-grid").innerHTML = productHtml;
 
-  document.querySelectorAll(".add-to-cart-button").forEach((button, index) => {
+  document.querySelectorAll(".add-to-cart-button").forEach((button) => {
     button.addEventListener("click", () => {
       const productId = button.dataset.productId;
-      addToCart(productId);
+
+      const quantitySelector = document.querySelector(
+        `.js-quantity-selector-${productId}`,
+      );
+      const quantity = Number(quantitySelector.value);
+
+
+      addToCart(productId, quantity);
+
       updateCartQuanity();
     });
   });

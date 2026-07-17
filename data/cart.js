@@ -1,4 +1,3 @@
-// import { products } from "./products.js";
 
 export let cart;
 
@@ -27,7 +26,7 @@ function saveToLocalStorage() {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-export function addToCart(productId) {
+export function addToCart(productId, quantity = 1) {
   let matchItem;
   cart.forEach((item) => {
     if (productId === item.productId) {
@@ -36,16 +35,14 @@ export function addToCart(productId) {
   });
 
   if (matchItem) {
-    matchItem.quantity += 1;
+    matchItem.quantity += quantity;
   } else {
     cart.push({
       productId: productId,
-      quantity: 1,
+      quantity: quantity,
       deliveryOptionId: "1",
     });
   }
-
-  // console.log(cart);
 
   saveToLocalStorage();
 }

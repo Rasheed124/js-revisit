@@ -3,7 +3,7 @@ import {
   updateCartQuanity,
   removeFromCart,
   updateDeliveryOption,
-  updateQuantity 
+  updateQuantity,
 } from "../../data/cart.js";
 
 import { getProduct } from "../../data/products.js";
@@ -107,24 +107,30 @@ export function renderOrderSummary() {
     return html;
   }
 
-  document.querySelector(".order-summary-detailsjs").innerHTML = cartSummaryHtml;
+  document.querySelector(".order-summary-detailsjs").innerHTML =
+    cartSummaryHtml;
 
   document.querySelectorAll(".js-update-link").forEach((link) => {
     link.addEventListener("click", () => {
       const productId = link.dataset.productId;
-      const container = document.querySelector(`.cart-item-container-${productId}`);
-      
+      const container = document.querySelector(
+        `.cart-item-container-${productId}`,
+      );
+
       container.classList.add("is-editing-quantity");
     });
   });
 
-  // 4. Save Link Event Listeners
   document.querySelectorAll(".js-save-link").forEach((link) => {
     link.addEventListener("click", () => {
       const productId = link.dataset.productId;
-      const container = document.querySelector(`.cart-item-container-${productId}`);
-      
-      const inputElement = document.querySelector(`.js-quantity-input-${productId}`);
+      const container = document.querySelector(
+        `.cart-item-container-${productId}`,
+      );
+
+      const inputElement = document.querySelector(
+        `.js-quantity-input-${productId}`,
+      );
       const newQuantity = Number(inputElement.value);
 
       if (newQuantity <= 0 || newQuantity >= 100) {
@@ -150,7 +156,9 @@ export function renderOrderSummary() {
       updateCartQuanity();
       renderPaymentSummary();
 
-      const container = document.querySelector(`.cart-item-container-${productCartID}`);
+      const container = document.querySelector(
+        `.cart-item-container-${productCartID}`,
+      );
       container.remove();
     });
   });
