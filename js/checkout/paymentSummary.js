@@ -5,6 +5,11 @@ import { orderCart } from "../order.js";
 import { formatCurrency } from "../utils/money.js";
 
 export function renderPaymentSummary() {
+  const paymentSummaryElement = document.querySelector(".js-payment-summary");
+  if (!paymentSummaryElement) {
+    return;
+  }
+
   let productPriceCent = 0;
   let shippingPriceCent = 0;
   let itemCount = 0;
@@ -20,7 +25,6 @@ export function renderPaymentSummary() {
 
   const totalBeforCents = productPriceCent + shippingPriceCent;
   const taxCents = totalBeforCents * 0.1;
-
   const totalCents = totalBeforCents + taxCents;
 
   let paymentSummaryHtml = `
@@ -47,16 +51,15 @@ export function renderPaymentSummary() {
 
           <div class="payment-summary-row total-row">
             <div>Order total:</div>
-            <div class="payment-summary-money">$${totalCents}</div>
+            <div class="payment-summary-money">$${formatCurrency(totalCents)}</div>
           </div>
 
            <button class="place-order-button button-primary js-place-order">
             Place your order
           </button>
-  
   `;
 
-  document.querySelector(".js-payment-summary").innerHTML = paymentSummaryHtml;
+  paymentSummaryElement.innerHTML = paymentSummaryHtml;
 
   document
     .querySelector(".js-place-order")
@@ -68,9 +71,7 @@ export function renderPaymentSummary() {
       });
 
       const order = await response.json();
-
       orderCart(order);
-      
 
       window.location.href = "orders.html";
     });

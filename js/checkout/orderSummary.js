@@ -159,7 +159,9 @@ export function renderOrderSummary() {
       const container = document.querySelector(
         `.cart-item-container-${productCartID}`,
       );
-      container.remove();
+      if (container) {
+        container.remove();
+      }
     });
   });
 
