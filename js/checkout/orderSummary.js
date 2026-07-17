@@ -3,7 +3,7 @@ import {
   updateCartQuanity,
   removeFromCart,
   updateDeliveryOption,
-  updateQuantity // 1. Import the update function
+  updateQuantity 
 } from "../../data/cart.js";
 
 import { getProduct } from "../../data/products.js";
@@ -13,6 +13,7 @@ import {
   deliveryOptions,
   getDeliveryOption,
 } from "../../data/deliveryOptions.js";
+import { checkEmptyCart } from "../checkout.js";
 
 export function renderOrderSummary() {
   let cartSummaryHtml = "";
@@ -145,6 +146,7 @@ export function renderOrderSummary() {
     deletBtn.addEventListener("click", () => {
       const productCartID = deletBtn.dataset.productCartId;
       removeFromCart(productCartID);
+      checkEmptyCart();
       updateCartQuanity();
       renderPaymentSummary();
 
