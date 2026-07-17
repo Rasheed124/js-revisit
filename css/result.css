@@ -1,0 +1,135 @@
+
+
+.results-container {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 32px;
+  min-height: 400px;
+  width: 100%;
+}
+
+/* --- Toggle State Engine --- */
+.main-container.results-visible header .rate-heading ,
+.main-container.results-visible .typing-container {
+  display: none !important;
+}
+
+.main-container.results-visible .results-container {
+  display: flex;
+}
+
+/* --- Header Section --- */
+.results-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.success-icon {
+  background-color: hsla(140, 63%, 57%, 0.1);
+  color: var(--green-500);
+  border: 8px solid hsla(140, 63%, 57%, 0.05);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.results-header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.results-header p {
+  color: var(--neutral-400);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* --- Results Metric Cards --- */
+.results-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 540px;
+}
+
+.result-card {
+  background-color: transparent;
+  border: 1px solid var(--neutral-800);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  flex: 1;
+}
+
+.card-label {
+  font-size: 13px;
+  color: var(--neutral-500);
+  font-weight: 600;
+}
+
+.card-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--neutral-0);
+}
+
+.card-value.accuracy {
+  color: var(--red-500);
+}
+
+.chars-correct {
+  color: var(--green-500);
+}
+
+.chars-incorrect {
+  color: var(--red-500);
+}
+
+/* --- Action Button --- */
+.action-button {
+  background-color: var(--neutral-0);
+  color: var(--neutral-900);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-family: var(--font-family);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: opacity 0.2s ease;
+}
+
+.action-button:hover {
+  opacity: 0.9;
+}
+
+/* --- Desktop Layout Grid Switch --- */
+@media (min-width: 768px) {
+  .results-header h1 {
+    font-size: 40px;
+  }
+
+  .results-cards {
+    flex-direction: row;
+  }
+
+  .result-card {
+    padding: 20px;
+  }
+}

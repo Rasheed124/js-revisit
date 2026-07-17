@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="./css/general.css" />
+    <link rel="stylesheet" href="./css/result.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Frontend Mentor | Typing Speed Test</title>
+  </head>
+  <body>
+    <div class="main-container ">
+      <header class="container">
+        <div class="title-heading flex-prop">
+          <div class="logo">
+            <img src="./assets/images/logo-small.svg" alt="Logo" />
+            <div>
+              <h2>Typing Speed Test</h2>
+              <p>Type as fast as you can in 60 seconds</p>
+            </div>
+          </div>
+
+          <div class="score flex-prop">
+            <img src="./assets/images/icon-personal-best.svg" alt="Trophy" />
+            <h3>Personal best: <span>92 WPM</span></h3>
+          </div>
+        </div>
+
+        <div class="rate-heading">
+          <div class="row1 flex-prop">
+            <div class="stat-item">
+              WPM: <span class="stat-val wpm-val">40</span>
+            </div>
+            <div class="stat-item">
+              Accuracy: <span class="stat-val accuracy-val">94%</span>
+            </div>
+            <div class="stat-item">
+              Time: <span class="stat-val time-val">0:46</span>
+            </div>
+          </div>
+
+          <div class="row2 flex-prop">
+            <div class="control-group">
+              <label>Difficulty:</label>
+              <select class="mobile-control" id="difficulty-select">
+                <option value="Easy">Easy</option>
+                <option value="Medium">Medium</option>
+                <option value="Hard" selected>Hard</option>
+              </select>
+              <div class="desktop-control btn-group" data-type="difficulty">
+                <button type="button" class="control-btn">Easy</button>
+                <button type="button" class="control-btn">Medium</button>
+                <button type="button" class="control-btn active">Hard</button>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label>Mode:</label>
+              <select class="mobile-control" id="mode-select">
+                <option value="timed60s" selected>Timed (60s)</option>
+                <option value="passage">Passage</option>
+              </select>
+              <div class="desktop-control btn-group" data-type="mode">
+                <button type="button" class="control-btn active">
+                  Timed (60s)
+                </button>
+                <button type="button" class="control-btn">Passage</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="typing-container container not-started">
+        <div class="content">
+          <span class="correct">The</span>
+          <span class="correct">archaeological</span>
+          <span class="correct">expedition</span>
+          <span class="incorrect"
+            >une<span class="incorrect-char">a</span>rthed</span
+          >
+          <span class="correct">artifacts</span>
+          <span class="correct">that</span>
+          <span class="correct">complicated</span>
+          <span class="incorrect"
+            >prev<span class="incorrect-char">ai</span>ling</span
+          >
+          <span class="correct">theories</span>
+          <span class="correct">about</span> <span class="correct">Bron</span
+          ><span class="active-cursor">z</span>e Age trade networks. Obsidian
+          from Anatolia, lapis lazuli from Afghanistan, and amber from the
+          Baltic—all discovered in a single Mycenaean tomb—suggested commercial
+          connections far more extensive than previously hypothesized. "We've
+          underestimated ancient peoples' navigational capabilities and their
+          appetite for luxury goods," the lead researcher observed.
+          "Globalization isn't as modern as we assume."
+        </div>
+
+        <div class="typing-button">
+          <button type="button">Start Typing Test</button>
+          <p>Or click the text and start typing</p>
+        </div>
+
+        <button class="reset-button">
+          Restart Test
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+            <path d="M3 3v5h5"></path>
+          </svg>
+        </button>
+      </main>
+
+      <!-- RESULT SCREEEN -->
+    </div>
+
+    <footer class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Rasheed</a>.
+    </footer>
+  </body>
+</html>
