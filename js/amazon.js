@@ -1,10 +1,18 @@
 import { cart, addToCart, updateCartQuanity } from "../data/cart.js";
 
-import { loadProducts, products } from "../data/products.js";
+import { loadProductsFetch, products } from "../data/products.js";
 
 import { formatCurrency } from "./utils/money.js";
 
-loadProducts(renderProductGrid);
+async function loadHomePage() {
+  try {
+    await loadProductsFetch();
+    renderProductGrid();
+  } catch (error) {
+    console.error("Failed to load products:", error);
+  }
+}
+loadHomePage();
 
 function renderProductGrid() {
   let productHtml = "";
@@ -77,4 +85,6 @@ function renderProductGrid() {
       updateCartQuanity();
     });
   });
+
+  updateCartQuanity();
 }

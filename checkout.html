@@ -32,7 +32,10 @@
         </div>
 
         <div class="checkout-header-middle-section">
-          Checkout (<a class="return-to-home-link" href="amazon.html">3 items</a
+          Checkout (<a
+            class="return-to-home-link js-cart-link"
+            href="amazon.html"
+            ></a
           >)
         </div>
 
@@ -51,6 +54,9 @@
         <div class="payment-summary js-payment-summary"></div>
       </div>
     </div>
+
+    <!-- To prevent log errors in console -->
+    <div class="orders-grid js-order-grid" style="display: none"></div>
 
     <script src="./js/utils/day.js"></script>
     <script type="module" src="./js/checkout.js"></script>
