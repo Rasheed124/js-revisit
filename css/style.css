@@ -7,13 +7,6 @@
   height: 1px;
 }
 
-.game-container {
-  /* Adapts dynamically when mobile soft keyboard shows/hides */
-  min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
 
 /* Hide non-essential layout blocks when test is active on mobile screens */
 @media (max-width: 768px) {

@@ -17,8 +17,17 @@ function startTimer() {
 
 function startTest() {
   if (Model.state.isTestActive) return;
+
   Model.state.isTestActive = true;
   startTimer();
+
+  // Trigger mobile soft keyboard synchronously within user gesture
+  const hiddenInput = document.getElementById("hidden-mobile-input");
+  if (hiddenInput) {
+    hiddenInput.value = "";
+    hiddenInput.focus();
+  }
+
   View.renderApp(Model.state);
 }
 
