@@ -60,7 +60,7 @@
               </div>
             </div>
 
-            <div class="control-group" >
+            <div class="control-group">
               <label>Mode:</label>
               <select class="mobile-control" id="mode-select">
                 <option value="timed60s" selected>Timed (60s)</option>
@@ -78,7 +78,16 @@
       </header>
 
       <main class="typing-container container">
-        <div class="content"></div>
+        <div class="content">
+          <input
+            type="text"
+            id="hidden-mobile-input"
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="false"
+          />
+        </div>
 
         <div class="typing-button">
           <button type="button">Start Typing Test</button>

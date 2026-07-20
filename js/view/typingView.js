@@ -55,6 +55,16 @@ export function renderTypingContent(state) {
   });
 
   DOM.contentContainer.appendChild(fragment);
+
+  // Auto-scroll the active cursor into view (essential for mobile viewports)
+  const activeSpan = DOM.contentContainer.querySelector(".active-cursor");
+  if (activeSpan) {
+    activeSpan.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+      inline: "nearest",
+    });
+  }
 }
 
 export function renderContainerState(state) {

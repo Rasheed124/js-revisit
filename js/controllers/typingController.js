@@ -32,7 +32,6 @@ function completeTest() {
   Model.state.isTestActive = false;
   Model.state.isTestComplete = true;
 
-  
   Model.checkForNewPersonalBest();
 
   View.renderApp(Model.state);
@@ -84,9 +83,48 @@ function handleTyping(pressedKey) {
 }
 
 export function setupEventListeners() {
-  View.DOM.startButton.addEventListener("click", startTest);
+  const hiddenInput = document.getElementById("hidden-mobile-input");
 
+  // 1. Primary Action Buttons
+  View.DOM.startButton.addEventListener("click", startTest);
+  View.DOM.resetButton.addEventListener("click", resetTest);
+  View.DOM.goAgainButton.addEventListener("click", resetTest);
+
+  // 2. Mobile Focus Proxy: Tapping the text container re-focuses keyboard on mobile
+  View.DOM.contentContainer.addEventListener("click", () => {
+    if (hiddenInput && Model.state.isTestActive) {
+      hiddenInput.focus();
+    }
+  });
+
+  // 3. Mobile Input Handlers (Translates touch/virtual typing into handleTyping)
+  if (hiddenInput) {
+    hiddenInput.addEventListener("input", (e) => {
+      // Auto-start test if typing directly into focused input
+      if (!Model.state.isTestActive && !Model.state.isTestComplete) {
+        startTest();
+      }
+
+      const typedChar = e.data;
+      if (typedChar) {
+        handleTyping(typedChar);
+      }
+      hiddenInput.value = ""; // Clear buffer immediately
+    });
+
+    hiddenInput.addEventListener("keydown", (e) => {
+      // Mobile software keyboards fire Backspace as a keydown event
+      if (e.key === "Backspace") {
+        handleTyping("Backspace");
+      }
+    });
+  }
+
+  // 4. Desktop Global Keyboard Hook
   window.addEventListener("keydown", (event) => {
+    // Prevent duplicate input processing if user is typing through mobile input
+    if (document.activeElement === hiddenInput) return;
+
     if (event.key.length > 1 && event.key !== "Backspace") return;
     if (!Model.state.isTestActive && !Model.state.isTestComplete) {
       startTest();
@@ -94,9 +132,7 @@ export function setupEventListeners() {
     handleTyping(event.key);
   });
 
-  View.DOM.resetButton.addEventListener("click", resetTest);
-  View.DOM.goAgainButton.addEventListener("click", resetTest);
-
+  // 5. Mobile Control Select Dropdowns
   View.DOM.mobileDifficulty.addEventListener("change", (e) =>
     updateDifficulty(e.target.value),
   );
@@ -104,6 +140,7 @@ export function setupEventListeners() {
     updateMode(e.target.value),
   );
 
+  // 6. Desktop Control Groups (Event Delegation)
   View.DOM.desktopDifficultyGroup.addEventListener("click", (e) => {
     const btn = e.target.closest(".control-btn");
     if (btn) updateDifficulty(btn.textContent.trim());
