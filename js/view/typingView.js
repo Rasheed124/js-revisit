@@ -68,7 +68,7 @@ export function renderTypingContent(state) {
     activeSpan.scrollIntoView({
       behavior: "smooth",
       block: "center",
-      inline: "nearest",
+      // inline: "nearest",
     });
   }
 }
