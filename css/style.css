@@ -1,6 +1,3 @@
-
-
-
 .flex-prop {
   display: flex;
   align-items: center;
@@ -39,6 +36,10 @@ header.container {
   color: var(--neutral-500);
   margin-top: 4px;
 }
+.logo h2,
+.logo p {
+  display: none;
+}
 
 .score {
   gap: 8px;
@@ -46,7 +47,7 @@ header.container {
 }
 
 .score h3 {
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 400;
 }
 
@@ -186,8 +187,6 @@ select.mobile-control {
   display: flex;
 }
 
-
-
 .typing-button button {
   background-color: var(--blue-600);
   color: var(--neutral-0);
@@ -244,6 +243,15 @@ select.mobile-control {
   body {
     padding: 10px 40px;
   }
+
+  .logo h2,
+  .logo p {
+    display: block;
+  }
+
+  .score h3 {
+  font-size: 15px;
+}
 
   header.container {
     gap: 24px;
