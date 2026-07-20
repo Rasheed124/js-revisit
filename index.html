@@ -77,10 +77,8 @@
         </div>
       </header>
 
-      <main class="typing-container container ">
-        <div class="content">
-      
-        </div>
+      <main class="typing-container container">
+        <div class="content"></div>
 
         <div class="typing-button">
           <button type="button">Start Typing Test</button>
@@ -94,6 +92,63 @@
       </main>
 
       <!-- RESULT SCREEEN -->
+      <section class="results-container">
+        <div class="results-header">
+          <div class="success-icon">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <h1>Test Complete!</h1>
+          <p>Solid run. Keep pushing to beat your high score.</p>
+        </div>
+
+        <div class="results-cards">
+          <div class="result-card">
+            <span class="card-label">WPM:</span>
+            <span class="card-value">85</span>
+          </div>
+          <div class="result-card">
+            <span class="card-label">Accuracy:</span>
+            <span class="card-value accuracy">90%</span>
+          </div>
+          <div class="result-card">
+            <span class="card-label">Characters:</span>
+            <span class="card-value chars">
+              <span class="chars-correct">120</span>/<span
+                class="chars-incorrect"
+                >5</span
+              >
+            </span>
+          </div>
+        </div>
+
+        <button type="button" class="action-button">
+          Go Again
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+            <path d="M3 3v5h5"></path>
+          </svg>
+        </button>
+      </section>
     </div>
 
     <footer class="attribution">
