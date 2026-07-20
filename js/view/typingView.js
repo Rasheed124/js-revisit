@@ -56,7 +56,13 @@ export function renderTypingContent(state) {
 
   DOM.contentContainer.appendChild(fragment);
 
-  // Auto-scroll the active cursor into view (essential for mobile viewports)
+  // 1. Reset Case: Scroll text container back to top when starting over
+  if (state.currentIndex === 0) {
+    DOM.contentContainer.scrollTop = 0;
+    return;
+  }
+
+  // 2. Active Typing Case: Keep active cursor centered
   const activeSpan = DOM.contentContainer.querySelector(".active-cursor");
   if (activeSpan) {
     activeSpan.scrollIntoView({
@@ -66,6 +72,8 @@ export function renderTypingContent(state) {
     });
   }
 }
+
+
 
 export function renderContainerState(state) {
   if (state.isTestActive) {
