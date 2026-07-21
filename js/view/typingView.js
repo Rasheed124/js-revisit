@@ -56,13 +56,6 @@ export function renderTypingContent(state) {
 
   DOM.contentContainer.appendChild(fragment);
 
-  // 1. Reset Case: Instant snap back to top without window layout shifts
-  if (state.currentIndex === 0) {
-    DOM.contentContainer.scrollTop = 0;
-    return;
-  }
-
-  // 2. Mobile Line Scroll: Scroll internal container ONLY when cursor moves past middle line
   const activeSpan = DOM.contentContainer.querySelector(".active-cursor");
   if (activeSpan) {
     const containerHeight = DOM.contentContainer.clientHeight;

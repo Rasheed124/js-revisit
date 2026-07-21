@@ -7,12 +7,13 @@
   height: 1px;
 }
 
-/* Prevent full-page vertical bouncing on mobile devices */
-html,
-body {
-  overflow: hidden;
-  height: 100dvh;
-  touch-action: manipulation;
+
+/* Hide non-essential layout blocks when test is active on mobile screens */
+@media (max-width: 768px) {
+  body.test-active .header-logo,
+  body.test-active .footer-links {
+    display: none; /* Collapse extra margins to make room for text area & stats */
+  }
 }
 
 .flex-prop {
@@ -151,22 +152,9 @@ select.mobile-control {
 
 .typing-container {
   position: relative;
+  min-height: 320px;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem; /* Creates clean vertical spacing between components */
-}
-
-/* Ensure the typing box has a fixed height and internal scrolling only */
-.typing-content-container {
-  max-height: 180px;
-  overflow-y: auto;
-  position: relative;
-  -webkit-overflow-scrolling: touch;
-}
-
-.typing-content-container span {
-  user-select: none;
-  -webkit-user-select: none;
 }
 
 .content {

@@ -21,7 +21,6 @@ function startTest() {
   Model.state.isTestActive = true;
   startTimer();
 
-  // Trigger mobile soft keyboard synchronously within user gesture
   const hiddenInput = document.getElementById("hidden-mobile-input");
   if (hiddenInput) {
     hiddenInput.value = "";
