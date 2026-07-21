@@ -58,7 +58,13 @@ export function renderTypingContent(state) {
 
 
 
-
+  // const activeSpan = DOM.contentContainer.querySelector(".active-cursor");
+  // if (activeSpan) {
+  //   activeSpan.scrollIntoView({
+  //     behavior: "smooth",
+   
+  //   });
+  // }
 }
 
 
