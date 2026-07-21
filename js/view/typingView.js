@@ -56,17 +56,18 @@ export function renderTypingContent(state) {
 
   DOM.contentContainer.appendChild(fragment);
 
+
+
   const activeSpan = DOM.contentContainer.querySelector(".active-cursor");
   if (activeSpan) {
-    const containerHeight = DOM.contentContainer.clientHeight;
-    const spanTop = activeSpan.offsetTop - DOM.contentContainer.offsetTop;
-
-    // Trigger internal scroll only if active character moves past the middle height
-    if (spanTop > DOM.contentContainer.scrollTop + containerHeight / 2) {
-      DOM.contentContainer.scrollTop = spanTop - containerHeight / 3;
-    }
+    activeSpan.scrollIntoView({
+      behavior: "smooth",
+   
+    });
   }
 }
+
+
 
 export function renderContainerState(state) {
   if (state.isTestActive) {
