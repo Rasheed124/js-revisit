@@ -56,10 +56,14 @@ export function renderTypingContent(state) {
 
   DOM.contentContainer.appendChild(fragment);
 
-  // if (state.currentIndex === 0) {
-  //   DOM.contentContainer.scrollTop = 0;
-  //   return;
-  // }
+  const activeSpan = DOM.contentContainer.querySelector(".active-cursor");
+  if (activeSpan) {
+    activeSpan.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+      inline: "nearest",
+    });
+  }
 }
 
 export function renderContainerState(state) {
