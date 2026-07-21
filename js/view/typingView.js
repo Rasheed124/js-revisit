@@ -56,13 +56,22 @@ export function renderTypingContent(state) {
 
   DOM.contentContainer.appendChild(fragment);
 
+  // 1. Reset Case: Instant snap back to top without window layout shifts
+  if (state.currentIndex === 0) {
+    DOM.contentContainer.scrollTop = 0;
+    return;
+  }
+
+  // 2. Mobile Line Scroll: Scroll internal container ONLY when cursor moves past middle line
   const activeSpan = DOM.contentContainer.querySelector(".active-cursor");
   if (activeSpan) {
-    activeSpan.scrollIntoView({
-      behavior: "smooth",
-      block: "center",
-      inline: "nearest",
-    });
+    const containerHeight = DOM.contentContainer.clientHeight;
+    const spanTop = activeSpan.offsetTop - DOM.contentContainer.offsetTop;
+
+    // Trigger internal scroll only if active character moves past the middle height
+    if (spanTop > DOM.contentContainer.scrollTop + containerHeight / 2) {
+      DOM.contentContainer.scrollTop = spanTop - containerHeight / 3;
+    }
   }
 }
 
