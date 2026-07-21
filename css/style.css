@@ -8,13 +8,7 @@
 }
 
 
-/* Hide non-essential layout blocks when test is active on mobile screens */
-@media (max-width: 768px) {
-  body.test-active .header-logo,
-  body.test-active .footer-links {
-    display: none; /* Collapse extra margins to make room for text area & stats */
-  }
-}
+
 
 .flex-prop {
   display: flex;
